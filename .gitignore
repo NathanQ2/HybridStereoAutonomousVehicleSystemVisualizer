@@ -2,6 +2,8 @@
 .godot/
 /android/
 
+builds
+
 # Mac os
 .DS_Store
 **/.DS_Store

@@ -4,3 +4,11 @@
 
 [node name="Controller" type="Node"]
 script = ExtResource("1_usvvq")
+
+[node name="DebugLabel" type="Label" parent="."]
+offset_right = 841.0
+offset_bottom = 398.0
+theme_override_font_sizes/font_size = 61
+text = "This is a label"
+horizontal_alignment = 1
+vertical_alignment = 1
