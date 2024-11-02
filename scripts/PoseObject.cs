@@ -1,36 +1,90 @@
 using System;
-using System.Runtime.InteropServices;
+using System.Collections;
+using System.Collections.Generic;
+using System.Dynamic;
+using System.Runtime.CompilerServices;
+using System.Security.AccessControl;
 using Godot;
 
-public struct PoseObject {
-    public enum ObjectType : Int16 {
+public abstract class PoseObject {
+    public enum ObjectType : Int32 {
         None = -1,
         StopSign,
         Warning,
         Regulatory
     }
 
-    public ObjectType Type { get; private set;}
-    public Vector3 Position { get; private set;}
+    public static readonly int SerializedSize = sizeof(ObjectType) + sizeof(float) * 3;
 
-    public PoseObject(ObjectType type, Vector3 position) {
-        Type = type;
+    public Vector3 Position { get; protected set; }
+    public ObjectType Type { get; protected set; }
+
+    public PoseObject(Vector3 position, ObjectType type) {
         Position = position;
+        Type = type;
     }
 
-    public PoseObject() {
-        Type = ObjectType.None;
-        Position = new Vector3();
+    public static int FromBytes(byte[] bytes, out PoseObject? obj) {
+        if (bytes.Length < sizeof(ObjectType)) {
+            obj = null;
+            return 0;
+        }
+        
+        ObjectType type  = (ObjectType)BitConverter.ToInt16(bytes[0..sizeof(ObjectType)]);
+        GD.Print($"Print2: {type}");
+
+        switch (type)
+        {
+            case ObjectType.StopSign:
+                StopSign.FromBytes(bytes, out obj);
+
+                return StopSign.SerializedSize;
+            case ObjectType.Regulatory:
+                SpeedLimitSign.FromBytes(bytes, out obj);
+
+                return SpeedLimitSign.SerializedSize;
+            case ObjectType.Warning:
+                WarningSign.FromBytes(bytes, out obj);
+
+                return WarningSign.SerializedSize;
+            default:
+                obj = null;
+                return 0;
+        };
     }
 
-    public static PoseObject? FromBytes(byte[] bytes) {
-        PoseObject obj = new();
-        if (bytes.Length < Marshal.SizeOf(obj)) 
-            return null;
+    public static int PoseObjectsFromBytes(byte[] bytes, out PoseObject[] objs) {
+        int HandleUnknownType() {
+            GD.PushWarning("An object is being deserialized form the network with unknown type!");
+            return SerializedSize;
+        }
 
-        // First 4 bytes should be object's type
-        obj.Type = (ObjectType)BitConverter.ToInt16(bytes[0..sizeof(ObjectType)]);
+        GD.Print($"bytesLen: {bytes.Length}");
 
-        return null;
+        List<PoseObject> objects = new List<PoseObject>();
+
+        int arrayReadPosition = 0;
+        // While the amount of bytes left is greater than the minimum amount of bytes of a serialized object
+        while (arrayReadPosition < bytes.Length) {
+            // Get this object's type
+            int typeInt = BitConverter.ToInt32(bytes[arrayReadPosition..(arrayReadPosition + sizeof(ObjectType))]);
+            GD.Print($"Type {typeInt}");
+            ObjectType type = (ObjectType)typeInt;
+            int objectSize = type switch {
+                ObjectType.StopSign => StopSign.SerializedSize,
+                ObjectType.Regulatory => SpeedLimitSign.SerializedSize,
+                ObjectType.Warning => WarningSign.SerializedSize,
+                // Otherwise set to default serialized size and hope for the best!
+                _ => HandleUnknownType()
+            };
+
+            GD.Print($"ObjSize: {objectSize}");
+
+            arrayReadPosition += FromBytes(bytes[arrayReadPosition..(arrayReadPosition + objectSize)], out PoseObject obj);
+            objects.Add(obj);
+        }
+
+        objs = objects.ToArray();
+        return arrayReadPosition;
     }
 }
