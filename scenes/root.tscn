@@ -5,3 +5,12 @@
 [node name="Root" type="Node3D"]
 
 [node name="Controller" parent="." instance=ExtResource("1_jynlg")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.999999, 0.0015842, -0.000421374, 0.00144353, 0.972808, 0.231608, 0.000776831, 0.231607, -0.972809, 0, 1.20652, -3.38808)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.865641, 0.500665, 0, -0.500665, -0.865641, 0, 3.22289, 0)
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(29.6, 0, 0, 0, 0.1, 0, 0, 0, 29.6, 0, -1, 0)

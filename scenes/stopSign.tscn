@@ -3,4 +3,4 @@
 [node name="StopSign" type="Node3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 3.53551, 0, 0, 0, 1.1, 0, 0, 0)
+size = Vector3(0.2, 0.2, 0.08)

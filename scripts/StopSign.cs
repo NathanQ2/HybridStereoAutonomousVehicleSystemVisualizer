@@ -1,4 +1,3 @@
-
 using System;
 using Godot;
 
@@ -23,8 +22,6 @@ public class StopSign : PoseObject
         ObjectType type  = (ObjectType)BitConverter.ToInt16(bytes[arrayReadIndex..(arrayReadIndex + sizeof(ObjectType))]);
         arrayReadIndex += sizeof(ObjectType);
 
-        GD.Print($"Type3: {type}");
-
         if (type != ObjectType.StopSign) {
             obj = null;
             return 0;
@@ -32,13 +29,13 @@ public class StopSign : PoseObject
 
         // Get object's position
         float x = BitConverter.ToSingle(bytes[arrayReadIndex..(arrayReadIndex + sizeof(float))]);
-        GD.Print($"X: {x}");
+        // GD.Print($"X: {x}");
         arrayReadIndex += sizeof(float);
         float y = BitConverter.ToSingle(bytes[arrayReadIndex..(arrayReadIndex + sizeof(float))]);
-        GD.Print($"Y: {y}");
+        // GD.Print($"Y: {y}");
         arrayReadIndex += sizeof(float);
         float z = BitConverter.ToSingle(bytes[arrayReadIndex..(arrayReadIndex + sizeof(float))]);
-        GD.Print($"Z: {z}");
+        // GD.Print($"Z: {z}");
         arrayReadIndex += sizeof(float);
 
         obj = new StopSign(x , y, z); 

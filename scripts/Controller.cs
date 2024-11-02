@@ -32,11 +32,11 @@ public partial class Controller : Node
     public override void _Ready()
     {
         // Load sign scenes
-        // m_NodeStop = GD.Load<PackedScene>("res://scenes/stopSign.tscn");
+        m_NodeStop = GD.Load<PackedScene>("res://scenes/stopSign.tscn");
         // m_NodeSpeedLimit = GD.Load<PackedScene>("res://scenes/speedLimitSign.tscn");
         // m_NodeWarning = GD.Load<PackedScene>("res://scenes/warningSign.tscn");
 
-        // m_StopSigns = new List<Node3D>();
+        m_StopSigns = new List<Node3D>();
         // m_SpeedLimitSings = new List<Node3D>();
         // m_WarningSigns = new List<Node3D>();
 
@@ -68,22 +68,45 @@ public partial class Controller : Node
             if (frame.HasValue) {
                 int i = frame.Value.PoseObjects.Length;
                 m_DebugLabel.Text = $"PoseObjects Len: {i}\n";
+
+                foreach (PoseObject obj in frame.Value.PoseObjects) {
+                    GD.Print($"OBJ {obj.Type}:\n  X: {obj.Position.X}\n  Y: {obj.Position.Y}\n  Z: {obj.Position.Z}");
+                    if (obj.Type == PoseObject.ObjectType.Regulatory) {
+                        GD.Print($"  Speed: {((SpeedLimitSign)obj).Speed}");
+                    }
+                }
+
+                InstantiateNodes(frame.Value.PoseObjects);
             }
 
             m_NetworkFrameTask = NetworkFrame.FromSocketStream(m_Socket);
         }
 
-        // InstantiateNodes(frame.PoseObjects);
     }
 
     private void InstantiateNodes(PoseObject[] poseObjects) {
+        PoseObject[] stopSigns = poseObjects.Where(obj => obj.Type == PoseObject.ObjectType.StopSign).ToArray();
+        PoseObject[] speedLimitSigns = poseObjects.Where(obj => obj.Type == PoseObject.ObjectType.Regulatory).ToArray();
+        PoseObject[] warningSigns = poseObjects.Where(obj => obj.Type == PoseObject.ObjectType.Warning).ToArray();
         // Get amount of each sign in this array
-        int stopSignCount = poseObjects.Where(obj => obj.Type == PoseObject.ObjectType.StopSign).Count();
-        int speedLimitSignCount = poseObjects.Where(obj => obj.Type == PoseObject.ObjectType.Regulatory).Count();
-        int warningSignCount = poseObjects.Where(obj => obj.Type == PoseObject.ObjectType.Warning).Count();
+        int stopSignCount = stopSigns.Length;
+        int speedLimitSignCount = speedLimitSigns.Length;
+        int warningSignCount = warningSigns.Length;
 
-        m_StopSigns.EnsureCapacity(stopSignCount);
-        m_SpeedLimitSings.EnsureCapacity(speedLimitSignCount);
-        m_WarningSigns.EnsureCapacity(warningSignCount);
+        if (stopSignCount > m_StopSigns.Capacity)
+            m_StopSigns.EnsureCapacity(stopSignCount);
+        // if (speedLimitSignCount > m_SpeedLimitSings.Capacity)
+        //     m_SpeedLimitSings.EnsureCapacity(speedLimitSignCount);
+        // if (warningSignCount > m_WarningSigns.Count)
+        //     m_WarningSigns.EnsureCapacity(warningSignCount);
+
+        for (int i = 0; i < stopSignCount; i++) {
+            if (i >= m_StopSigns.Count) {
+                m_StopSigns.Add(m_NodeStop.Instantiate<Node3D>());
+                AddChild(m_StopSigns[^1]);
+            }
+
+            m_StopSigns[i].Position = stopSigns[i].Position;
+        }
     }
 }

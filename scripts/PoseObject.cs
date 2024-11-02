@@ -1,9 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Dynamic;
-using System.Runtime.CompilerServices;
-using System.Security.AccessControl;
 using Godot;
 
 public abstract class PoseObject {
@@ -68,7 +64,6 @@ public abstract class PoseObject {
         while (arrayReadPosition < bytes.Length) {
             // Get this object's type
             int typeInt = BitConverter.ToInt32(bytes[arrayReadPosition..(arrayReadPosition + sizeof(ObjectType))]);
-            GD.Print($"Type {typeInt}");
             ObjectType type = (ObjectType)typeInt;
             int objectSize = type switch {
                 ObjectType.StopSign => StopSign.SerializedSize,

@@ -5,13 +5,13 @@ using Godot;
 public class SpeedLimitSign : PoseObject {
     public new static readonly int SerializedSize = sizeof(ObjectType) + sizeof(float) * 3 + sizeof(int);
 
-    public readonly int Speed;
+    public readonly uint Speed;
 
-    public SpeedLimitSign(Vector3 position, int speed) : base(position, ObjectType.Regulatory) {
+    public SpeedLimitSign(Vector3 position, uint speed) : base(position, ObjectType.Regulatory) {
         Speed = speed;
     }
 
-    public SpeedLimitSign(float x, float y, float z, int speed) : this(new Vector3(x, y, z), speed) {}
+    public SpeedLimitSign(float x, float y, float z, uint speed) : this(new Vector3(x, y, z), speed) {}
 
     public static new int FromBytes(byte[] bytes, out PoseObject? obj) {
         if (bytes.Length < SerializedSize) {
@@ -38,8 +38,8 @@ public class SpeedLimitSign : PoseObject {
         float z = BitConverter.ToSingle(bytes[arrayReadIndex..(arrayReadIndex + sizeof(float))]);
         arrayReadIndex += sizeof(float);
 
-        int speed = BitConverter.ToInt32(bytes[arrayReadIndex..(arrayReadIndex + sizeof(int))]);
-        arrayReadIndex += sizeof(int);
+        uint speed = BitConverter.ToUInt32(bytes[arrayReadIndex..(arrayReadIndex + sizeof(uint))]);
+        arrayReadIndex += sizeof(uint);
 
         obj = new SpeedLimitSign(x , y, z, speed); 
         return SerializedSize;
