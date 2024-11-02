@@ -1,0 +1,183 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://0pnno3qedbve"
+path="res://.godot/imported/scene.gltf-336a002a7bfa1d0992009c0b303157ef.scn"
+
+[deps]
+
+source_file="res://models/US Warning Road Signs/scene.gltf"
+dest_files=["res://.godot/imported/scene.gltf-336a002a7bfa1d0992009c0b303157ef.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"nodes": {
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_003": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_004": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_007": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_008": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_011": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_012": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_015": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_016": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_018": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_020": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_022": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_026": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_029": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_030": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_033": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_034": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_036": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_038": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_040": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_043": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_044": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_047": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_048": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_051": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_052": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_054": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_056": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_058": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_061": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_062": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_065": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_066": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_069": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_072": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_074": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_076": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_079": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_080": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_080/Cube_080_Material_0": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_083": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_084": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_088": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_090": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_093": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_094": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_141": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Cube_142": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode/Plane": {
+"import/skip_import": true
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

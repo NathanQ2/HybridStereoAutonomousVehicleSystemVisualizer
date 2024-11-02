@@ -1,16 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://bb01tphhhsd61"]
+[gd_scene load_steps=7 format=3 uid="uid://bb01tphhhsd61"]
 
 [ext_resource type="PackedScene" uid="uid://dgebs2ox01k1b" path="res://scenes/controller.tscn" id="1_jynlg"]
+[ext_resource type="PackedScene" uid="uid://sqlqbh2w3tyx" path="res://scenes/ControllableCamera.tscn" id="2_m150j"]
+[ext_resource type="Material" uid="uid://depy54f7t0ghx" path="res://materials/floorMaterial.tres" id="3_4435h"]
+[ext_resource type="Material" uid="uid://dstd00fnjdxt8" path="res://materials/testMaterial1.tres" id="3_q8mgu"]
+[ext_resource type="Material" uid="uid://dweiofhscrjtx" path="res://materials/testMaterial2.tres" id="4_n6gvx"]
+
+[sub_resource type="Environment" id="Environment_cewoo"]
+background_mode = 1
+fog_enabled = true
+fog_light_color = Color(0.239638, 0.263067, 0.299899, 1)
+fog_light_energy = 0.03
+fog_density = 0.1734
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.5766
+volumetric_fog_albedo = Color(0, 0, 0, 1)
 
 [node name="Root" type="Node3D"]
 
 [node name="Controller" parent="." instance=ExtResource("1_jynlg")]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.999999, 0.0015842, -0.000421374, 0.00144353, 0.972808, 0.231608, 0.000776831, 0.231607, -0.972809, 0, 1.20652, -3.38808)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.865641, 0.500665, 0, -0.500665, -0.865641, 0, 3.22289, 0)
+transform = Transform3D(1, 0, 0, 0, -0.986584, 0.163257, 0, -0.163257, -0.986584, 0, 3.22289, 0)
 
 [node name="Floor" type="CSGBox3D" parent="."]
-transform = Transform3D(29.6, 0, 0, 0, 0.1, 0, 0, 0, 29.6, 0, -1, 0)
+transform = Transform3D(29.6, 0, 0, 0, 0.1, 0, 0, 0, 29.6, 0, -0.8, 0)
+material_override = ExtResource("3_4435h")
+
+[node name="ControlableCamera" parent="." instance=ExtResource("2_m150j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.402445, 0, 0, 0, 0.402445, 0, 0, 0, 0.402445, 0.00348878, 0.285102, -0.00448346)
+visible = false
+material_override = ExtResource("3_q8mgu")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.426426, 0, 1.7302)
+visible = false
+material_override = ExtResource("4_n6gvx")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cewoo")

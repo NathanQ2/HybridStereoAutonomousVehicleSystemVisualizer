@@ -1,0 +1,11 @@
+Model Information:
+* title:	US Warning Road Signs
+* source:	https://sketchfab.com/3d-models/us-warning-road-signs-4845143398694701a2ab4b7a9bf64b9e
+* author:	OfekDavid (https://sketchfab.com/OfekDavid)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "US Warning Road Signs" (https://sketchfab.com/3d-models/us-warning-road-signs-4845143398694701a2ab4b7a9bf64b9e) by OfekDavid (https://sketchfab.com/OfekDavid) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

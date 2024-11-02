@@ -1,6 +1,24 @@
-[gd_scene format=3 uid="uid://dcql4ojxxmmpl"]
+[gd_scene load_steps=4 format=3 uid="uid://dcql4ojxxmmpl"]
+
+[ext_resource type="Script" path="res://scripts/NodeSign.gd" id="1_e57k0"]
+[ext_resource type="PackedScene" uid="uid://b7ik2aceth5rr" path="res://models/US Warning Road Signs/modified.tscn" id="1_x6eb2"]
+[ext_resource type="FontFile" uid="uid://864ytskvs8mn" path="res://fonts/Roboto Font/Roboto-Medium.ttf" id="2_vp3x1"]
 
 [node name="StopSign" type="Node3D"]
+script = ExtResource("1_e57k0")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 3.53551, 0, 0, 0, 1.1, 0, 0, 0)
+visible = false
+size = Vector3(0.2, 0.2, 0.08)
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_x6eb2")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="PositionText" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.192268, 0)
+pixel_size = 0.0006
+billboard = 1
+double_sided = false
+text = "(0.00, 0.00, 0.00)"
+font = ExtResource("2_vp3x1")
+font_size = 128

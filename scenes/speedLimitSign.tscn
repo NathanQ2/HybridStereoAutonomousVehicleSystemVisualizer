@@ -1,6 +1,24 @@
-[gd_scene format=3 uid="uid://dx5i5xwvuquyd"]
+[gd_scene load_steps=4 format=3 uid="uid://dx5i5xwvuquyd"]
+
+[ext_resource type="PackedScene" uid="uid://dgpqrxdur4jro" path="res://models/SignPackage/modified.tscn" id="1_ci7jg"]
+[ext_resource type="Script" path="res://scripts/NodeSign.gd" id="1_wv43c"]
+[ext_resource type="FontFile" uid="uid://864ytskvs8mn" path="res://fonts/Roboto Font/Roboto-Medium.ttf" id="2_eo068"]
 
 [node name="StopSign" type="Node3D"]
+script = ExtResource("1_wv43c")
+
+[node name="PositionText" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0.214149, 0)
+pixel_size = 0.0006
+billboard = 1
+double_sided = false
+text = "(0.00, 0.00, 0.00)"
+font = ExtResource("2_eo068")
+font_size = 128
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 3.53551, 0, 0, 0, 1.1, 0, 0, 0)
+visible = false
+size = Vector3(0.2, 0.2, 0.08)
+
+[node name="Sign Package" parent="." instance=ExtResource("1_ci7jg")]
+transform = Transform3D(-0.299495, 0, 2.61827e-08, 0, 0.299495, 0, -2.61827e-08, 0, -0.299495, 0, 0, 0)

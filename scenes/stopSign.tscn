@@ -1,6 +1,27 @@
-[gd_scene format=3 uid="uid://bm0y052v3nbun"]
+[gd_scene load_steps=5 format=3 uid="uid://bm0y052v3nbun"]
+
+[ext_resource type="Material" uid="uid://1ys6b7mooc1k" path="res://models/StopSign/StopSignMaterial.tres" id="1_2fd65"]
+[ext_resource type="Script" path="res://scripts/NodeSign.gd" id="1_fwonq"]
+[ext_resource type="ArrayMesh" uid="uid://cibwgrqmnshf" path="res://models/StopSign/Stop Sign.obj" id="1_vkny5"]
+[ext_resource type="FontFile" uid="uid://864ytskvs8mn" path="res://fonts/Roboto Font/Roboto-Medium.ttf" id="3_xnsew"]
 
 [node name="StopSign" type="Node3D"]
+script = ExtResource("1_fwonq")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+visible = false
 size = Vector3(0.2, 0.2, 0.08)
+
+[node name="StopSign" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.37, 0, -3.23464e-08, 0, 0.37, 0, 3.23464e-08, 0, -0.37, 0, -0.649355, -0.0403427)
+material_override = ExtResource("1_2fd65")
+mesh = ExtResource("1_vkny5")
+
+[node name="PositionText" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.192268, 0)
+pixel_size = 0.0006
+billboard = 1
+double_sided = false
+text = "(0.00, 0.00, 0.00)"
+font = ExtResource("3_xnsew")
+font_size = 128

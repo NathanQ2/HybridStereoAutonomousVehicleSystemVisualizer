@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgpqrxdur4jro"]
+
+[ext_resource type="PackedScene" uid="uid://d3ab3leo5wg32" path="res://models/SignPackage/Sign Package.fbx" id="1_ryq5j"]
+[ext_resource type="Material" uid="uid://qnss4r0svnma" path="res://materials/metalMat.tres" id="2_qr0wk"]
+[ext_resource type="Material" uid="uid://cm5wcqqey53bo" path="res://materials/signMaterial.tres" id="3_2ycjm"]
+
+[node name="Sign Package" instance=ExtResource("1_ryq5j")]
+
+[node name="Cylinder001" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0, 1.5, 0, -1, 0, -0.00612772, -2.65479, -0.00411582)
+material_override = ExtResource("2_qr0wk")
+
+[node name="Box001" parent="." index="1"]
+transform = Transform3D(1.29992, -5.9593e-08, -1.84593e-08, 5.9593e-08, 1.29992, -2.84695e-07, 1.86353e-08, 2.8741e-07, 1.28765, -0.00162184, 1.19209e-07, -0.000785589)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Box001" index="0"]
+transform = Transform3D(0.522942, -2.22577e-14, 2.77556e-16, 1.65751e-15, 0.823871, -3.55271e-15, 8.88178e-16, 7.10543e-14, 0.0375554, 0.000921422, -0.0749556, 0.0070429)
+material_override = ExtResource("3_2ycjm")

@@ -1,17 +1,12 @@
 using Godot;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading.Tasks;
 
 public partial class Controller : Node
 {
-    // Size of a packet sent over network
-    private static readonly int PacketSizeBytes = 512;
-
     private IPEndPoint m_IpEndpoint = new IPEndPoint(IPAddress.Loopback, 5006);
     private Socket m_Socket;
     private Task m_ConnectTask;
@@ -23,7 +18,7 @@ public partial class Controller : Node
     private PackedScene m_NodeWarning;
 
     private List<Node3D> m_StopSigns;
-    private List<Node3D> m_SpeedLimitSings;
+    private List<Node3D> m_SpeedLimitSigns;
     private List<Node3D> m_WarningSigns;
 
     private Task<NetworkFrame?> m_NetworkFrameTask = null;
@@ -33,12 +28,12 @@ public partial class Controller : Node
     {
         // Load sign scenes
         m_NodeStop = GD.Load<PackedScene>("res://scenes/stopSign.tscn");
-        // m_NodeSpeedLimit = GD.Load<PackedScene>("res://scenes/speedLimitSign.tscn");
-        // m_NodeWarning = GD.Load<PackedScene>("res://scenes/warningSign.tscn");
+        m_NodeSpeedLimit = GD.Load<PackedScene>("res://scenes/speedLimitSign.tscn");
+        m_NodeWarning = GD.Load<PackedScene>("res://scenes/warningSign.tscn");
 
         m_StopSigns = new List<Node3D>();
-        // m_SpeedLimitSings = new List<Node3D>();
-        // m_WarningSigns = new List<Node3D>();
+        m_SpeedLimitSigns = new List<Node3D>();
+        m_WarningSigns = new List<Node3D>();
 
         m_DebugLabel = GetNode<Label>("DebugLabel");
 
@@ -62,7 +57,7 @@ public partial class Controller : Node
     public override void _Process(double delta)
     {
         // GD.Print($"Status: {NetworkFrame.IsRunningFromSocketStream}");
-        
+
         if (m_NetworkFrameTask.IsCompleted) {
             NetworkFrame? frame = m_NetworkFrameTask.Result;
             if (frame.HasValue) {
@@ -78,10 +73,14 @@ public partial class Controller : Node
 
                 InstantiateNodes(frame.Value.PoseObjects);
             }
+            // else {
+            //     InstantiateNodes
+            // }
 
             m_NetworkFrameTask = NetworkFrame.FromSocketStream(m_Socket);
         }
 
+        
     }
 
     private void InstantiateNodes(PoseObject[] poseObjects) {
@@ -95,10 +94,11 @@ public partial class Controller : Node
 
         if (stopSignCount > m_StopSigns.Capacity)
             m_StopSigns.EnsureCapacity(stopSignCount);
-        // if (speedLimitSignCount > m_SpeedLimitSings.Capacity)
-        //     m_SpeedLimitSings.EnsureCapacity(speedLimitSignCount);
-        // if (warningSignCount > m_WarningSigns.Count)
-        //     m_WarningSigns.EnsureCapacity(warningSignCount);
+        if (speedLimitSignCount > m_SpeedLimitSigns.Capacity)
+            m_SpeedLimitSigns.EnsureCapacity(speedLimitSignCount);
+        if (warningSignCount > m_WarningSigns.Count)
+            m_WarningSigns.EnsureCapacity(warningSignCount);
+
 
         for (int i = 0; i < stopSignCount; i++) {
             if (i >= m_StopSigns.Count) {
@@ -107,6 +107,24 @@ public partial class Controller : Node
             }
 
             m_StopSigns[i].Position = stopSigns[i].Position;
+        }
+
+        for (int i = 0; i < speedLimitSignCount; i++) {
+            if (i >= m_SpeedLimitSigns.Count) {
+                m_SpeedLimitSigns.Add(m_NodeSpeedLimit.Instantiate<Node3D>());
+                AddChild(m_SpeedLimitSigns[^1]);
+            }
+
+            m_SpeedLimitSigns[i].Position = speedLimitSigns[i].Position; 
+        }
+
+        for (int i = 0; i < warningSignCount; i++) {
+            if (i >= m_WarningSigns.Count) {
+                m_WarningSigns.Add(m_NodeWarning.Instantiate<Node3D>());
+                AddChild(m_WarningSigns[^1]);
+            }
+
+            m_WarningSigns[i].Position = warningSigns[i].Position;
         }
     }
 }

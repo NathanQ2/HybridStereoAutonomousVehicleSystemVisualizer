@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cibwgrqmnshf"
+path="res://.godot/imported/Stop Sign.obj-f6d0c2ff82b0b745bc1fc159e2f4814d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Stop Sign.obj-f6d0c2ff82b0b745bc1fc159e2f4814d.mesh"]
+
+source_file="res://models/StopSign/Stop Sign.obj"
+dest_files=["res://.godot/imported/Stop Sign.obj-f6d0c2ff82b0b745bc1fc159e2f4814d.mesh", "res://.godot/imported/Stop Sign.obj-f6d0c2ff82b0b745bc1fc159e2f4814d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

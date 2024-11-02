@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7ik2aceth5rr"]
+
+[ext_resource type="PackedScene" uid="uid://0pnno3qedbve" path="res://models/US Warning Road Signs/scene.gltf" id="1_cgcd3"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_cgcd3")]
+
+[node name="Cube_070" parent="Sketchfab_model/9c169705f5e544f6b4c9cf17449f96ab_fbx/RootNode" index="0"]
+transform = Transform3D(-100, -8.74228e-06, -1.4243e-12, -1.94118e-21, -1.62921e-05, 100, -8.74228e-06, 100, 1.62921e-05, 0, 0, 0)
