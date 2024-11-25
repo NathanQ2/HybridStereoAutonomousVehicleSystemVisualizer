@@ -45,9 +45,9 @@ public partial class Controller : Node
 
         // TODO: Make this async better
         GD.Print("Waiting for connection...");
-        // m_DebugLabel.Text = "Status: Waiting for connection\n";
+        m_DebugLabel.Text = "Status: Waiting for connection...\n";
         m_Socket.Connect(m_IpEndpoint);
-        // m_DebugLabel.Text += "Connected!\n";
+        m_DebugLabel.Text = "Connected!\n";
         GD.Print("Connected!");
         
         m_NetworkFrameTask = NetworkFrame.FromSocketStream(m_Socket);
@@ -84,6 +84,11 @@ public partial class Controller : Node
     }
 
     private void InstantiateNodes(PoseObject[] poseObjects) {
+        // Hide all signs (they will be shown later if needed)
+        m_StopSigns.ForEach(node => node.Hide());
+        m_SpeedLimitSigns.ForEach(node => node.Hide());
+        m_WarningSigns.ForEach(node => node.Hide());
+
         PoseObject[] stopSigns = poseObjects.Where(obj => obj.Type == PoseObject.ObjectType.StopSign).ToArray();
         PoseObject[] speedLimitSigns = poseObjects.Where(obj => obj.Type == PoseObject.ObjectType.Regulatory).ToArray();
         PoseObject[] warningSigns = poseObjects.Where(obj => obj.Type == PoseObject.ObjectType.Warning).ToArray();
@@ -107,6 +112,7 @@ public partial class Controller : Node
             }
 
             m_StopSigns[i].Position = stopSigns[i].Position;
+            m_StopSigns[i].Show();
         }
 
         for (int i = 0; i < speedLimitSignCount; i++) {
@@ -116,6 +122,7 @@ public partial class Controller : Node
             }
 
             m_SpeedLimitSigns[i].Position = speedLimitSigns[i].Position; 
+            m_SpeedLimitSigns[i].Show();
         }
 
         for (int i = 0; i < warningSignCount; i++) {
@@ -125,6 +132,7 @@ public partial class Controller : Node
             }
 
             m_WarningSigns[i].Position = warningSigns[i].Position;
+            m_WarningSigns[i].Show();
         }
     }
 }
