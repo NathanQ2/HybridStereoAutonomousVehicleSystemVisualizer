@@ -58,11 +58,11 @@ public partial class Controller : Node
     {
         // GD.Print($"Status: {NetworkFrame.IsRunningFromSocketStream}");
 
-        if (m_NetworkFrameTask.IsCompleted) {
+        if (m_NetworkFrameTask is not null && m_NetworkFrameTask.IsCompleted) {
             NetworkFrame? frame = m_NetworkFrameTask.Result;
             if (frame.HasValue) {
                 int i = frame.Value.PoseObjects.Length;
-                m_DebugLabel.Text = $"PoseObjects Len: {i}\n";
+                // m_DebugLabel.Text = $"PoseObjects Len: {i}\n";
 
                 foreach (PoseObject obj in frame.Value.PoseObjects) {
                     GD.Print($"OBJ {obj.Type}:\n  X: {obj.Position.X}\n  Y: {obj.Position.Y}\n  Z: {obj.Position.Z}");
